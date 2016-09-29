@@ -1,0 +1,42 @@
+{
+  "name": "angular-odata-filter",
+  "version": "0.0.1",
+  "description": "Angular filter based on OData",
+  "main": "src/angular-odata-filter.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mcgraphix/angular-odata-filter.git"
+  },
+  "keywords": [
+    "Angular",
+    "OData",
+    "filter",
+    "$filter"
+  ],
+  "author": "Rob McKeown",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mcgraphix/angular-odata-filter/issues"
+  },
+  "homepage": "https://github.com/mcgraphix/angular-odata-filter#readme",
+  "dependencies": {
+    "angular": "^1.5.8"
+  },
+  "devDependencies": {
+    "angular-mocks": "^1.5.8",
+    "gulp": "^3.9.1",
+    "gulp-clean": "^0.3.2",
+    "gulp-jshint": "^2.0.1",
+    "gulp-karma": "0.0.5",
+    "gulp-uglify": "^2.0.0",
+    "jshint": "^2.9.3",
+    "karma": "^1.3.0",
+    "karma-jasmine": "^1.0.2",
+    "karma-phantomjs-launcher": "^1.0.2",
+    "karma-spec-reporter": "0.0.26",
+    "run-sequence": "^1.2.2"
+  }
+}
