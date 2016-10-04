@@ -226,16 +226,18 @@ describe('com.mcgraphix.odata.filter', function () {
             var obj = {
                 foo: 'bar',
                 bar: 'bar2',
-                name: 'rob'
+                name: 'rob',
+                field1: null
             };
 
             expect(ODataEvaluator.evaluate(obj, 'foo eq \'bar\'')).toBeTruthy();
             expect(ODataEvaluator.evaluate(obj, 'foo eq bar')).toBeFalsy();
             expect(ODataEvaluator.evaluate(obj, "substring(name, 1) eq 'ob'")).toBeTruthy();
-
+            expect(ODataEvaluator.evaluate(obj, "field1 eq null")).toBeTruthy();
             //NOTE these are testing values of foo and bar, not the strings 'foo' and 'bar'
             expect(ODataEvaluator.evaluate(obj, 'foo lt bar')).toBeTruthy();
             expect(ODataEvaluator.evaluate(obj, 'foo gt bar')).toBeFalsy();
+
         });
 
         it("should execute an expression with groupings against an object correctly", function () {
@@ -267,6 +269,7 @@ describe('com.mcgraphix.odata.filter', function () {
                 name: 'john',
                 f1: 'blah',
                 f2: 'field 1'
+
             };
 
             expect(ODataEvaluator.evaluate(obj, '(foo eq \'bar\' and name eq \'rob\') or f1 eq \'blah\'')).toBeTruthy();

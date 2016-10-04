@@ -32,7 +32,7 @@
                     if (!filterString || filterString === '') {
                         return null;
                     } else {
-                        return ODataExpressionParser.parse(filterString);;
+                        return ODataExpressionParser.parse(filterString);
                     }
                 },
 
@@ -87,31 +87,31 @@
         .service('ODataFunctions', function () {
             return {
                 'startswith': function (fullString, segment) {
-                    return fullString.toString().indexOf(segment) === 0;
+                    return fullString && fullString.toString().indexOf(segment) === 0;
                 },
                 'substring': function (fullString, start, length) {
-                    return fullString.toString().substr(start, length);
+                    return fullString && fullString.toString().substr(start, length);
                 },
                 'endswith': function (fullString, segment) {
-                    return fullString.toString().lastIndexOf(segment) === (fullString.toString().length - segment.toString().length)
+                    return fullString && (fullString.toString().lastIndexOf(segment) === (fullString.toString().length - segment.toString().length));
                 },
                 'length': function (fullString) {
-                    return fullString.toString().length;
+                    return fullString ? fullString.toString().length : 0;
                 },
                 'indexof': function (fullString, segment) {
-                    return fullString.toString().indexOf(segment);
+                    return  fullString ? fullString.toString().indexOf(segment) : -1;
                 },
                 'replace': function (fullString, token, replacement) {
-                    return fullString.toString().replace(token, replacement);
+                    return  fullString ? fullString.toString().replace(token, replacement) : '';
                 },
                 'tolower': function (fullString) {
-                    return fullString.toString().toLowerCase();
+                    return fullString ? fullString.toString().toLowerCase() : '';
                 },
                 'toupper': function (fullString) {
-                    return fullString.toString().toUpperCase();
+                    return fullString ? fullString.toString().toUpperCase() : '';
                 },
                 'trim': function (fullString) {
-                    return fullString.toString().trim();
+                    return fullString ? fullString.toString().trim() : '';
                 },
                 'concat': function () {
                     throw new Error("concat not implemented");
@@ -222,7 +222,9 @@
                     actualValue = evaluateSelector(object, this.subject);
                 }
 
-                if (typeof this.value === 'number') {
+                if (this.value === 'null') {
+                    testValue = null;
+                } else if (typeof this.value === 'number') {
                     testValue = this.value;
                 } else if (this.value.charAt(0) === "'") {
                     testValue = this.value.substr(1, this.value.length - 2);

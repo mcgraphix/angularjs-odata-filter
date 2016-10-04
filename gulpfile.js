@@ -21,7 +21,7 @@ gulp.task('clean', function() {
 });
 
 gulp.task('minify-js', function() {
-    gulp.src(['./src/**/*.js'])
+    gulp.src(['./src/**/*.js', '!./src/**/*.spec.js'])
         .pipe(uglify({
             // inSourceMap:
             // outSourceMap: "app.js.map"
